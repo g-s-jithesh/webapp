@@ -10,3 +10,8 @@ jobs:
       uses: actions/checkout@v4
     - name: Display Build Message
       run: echo "Build Success!"
+    - name: Notify Slack
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"Build Completed Successfully!"}' \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
